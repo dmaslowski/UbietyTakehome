@@ -39,6 +39,8 @@ export type Theme = {
         text: string;
         border: string;
         error: string;
+        shadow: string;
+        onPrimary: string;
     };
     spacing: {
         xs: number;
@@ -47,6 +49,9 @@ export type Theme = {
         lg: number;
         xl: number;
     };
+    size: {
+        md: number;
+    }
     borderRadius: {
         sm: number;
         md: number;

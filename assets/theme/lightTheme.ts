@@ -8,6 +8,8 @@ export const lightTheme: Theme = {
         text: "#111111",
         border: "#E0E0E0",
         error: "#D32F2F",
+        shadow: "#111111",
+        onPrimary: "#FFFFFF",
     },
     spacing: {
         xs: 4,
@@ -15,6 +17,9 @@ export const lightTheme: Theme = {
         md: 16,
         lg: 24,
         xl: 32,
+    },
+    size: {
+        md: 48,
     },
     borderRadius: {
         sm: 4,

@@ -8,6 +8,8 @@ export const darkTheme: Theme = {
         text: "#FFFFFF",
         border: "#333333",
         error: "#FF453A",
+        shadow: "#111111",
+        onPrimary: "#FFFFFF",
     },
     spacing: {
         xs: 4,
@@ -15,6 +17,9 @@ export const darkTheme: Theme = {
         md: 16,
         lg: 24,
         xl: 32,
+    },
+    size: {
+        md: 48,
     },
     borderRadius: {
         sm: 4,

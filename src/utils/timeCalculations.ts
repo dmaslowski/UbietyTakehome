@@ -12,6 +12,17 @@ export const findMinTime = (presences: PresenceResponse, currentTimeStamp: numbe
     return minTime;
 };
 
+
+export const findMinTimeFromIntervals = (intervals: number[][], currentTimeStamp: number) => {
+    let minTime = currentTimeStamp;
+    intervals.forEach(([enter]) => {
+        if (enter < minTime) {
+            minTime = enter;
+        }
+    });
+    return minTime;
+};
+
 // Convert timestamp to Y position - single unified coordinate system
 // Bottom of container (y = CONTAINER_HEIGHT) = MIN_TIME_FLOOR
 // Top of container (y = 0) = CURRENT_TIME_STAMP

@@ -1,5 +1,8 @@
 {
     "HomeScreen": {
-        "title": "Welcome to Prsnc App HomeScreen"
+        "title": "Welcome to Prsnc App HomeScreen",
+        "loading": "Loading presence data...",
+        "error": "An error occurred while loading presence data.",
+        "noData": "No presence data available at this time."
     }
 }
