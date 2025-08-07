@@ -35,6 +35,8 @@ In the output, you'll find options to open the app in a
 
 You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
+### Running Tests
+After running `npm install` tests can be invoked by running `npm run test`
 ### Decision Document
 
 First the most important decision I needed to make was what to name the application. Like any good startup I took a word and removed all the vowels to come up with the trendy looking 'Prsnce'.
