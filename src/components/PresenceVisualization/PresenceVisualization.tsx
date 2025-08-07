@@ -19,7 +19,7 @@ const PRESENSE_HEIGHT_OFFSET = 120; // Extra height to accommodate presence line
 type PresenceVizualizationProps = {
     presenceData: PresenceResponse;
     profilesData: ProfileResponse;
-    profilesPerPage?: number; // Optional prop to limit the number of profiles displayed
+    profilesPerPage?: number; 
 };
 
 const PresenceVisualization = (props: PresenceVizualizationProps) => {
@@ -107,13 +107,16 @@ const PresenceVisualization = (props: PresenceVizualizationProps) => {
                     <Text style={theme.textStyle.bodyBold}>→</Text>
                 </TouchableOpacity>
             </View>
-
             <View style={[styles(theme).profileNamesContainer, { marginTop: theme.spacing.md, marginLeft: LABEL_AREA_WIDTH, marginBottom: theme.spacing.md }]}>
                 {currentProfileIds.map((profileId) => (
                     <View key={`name-${profileId}`} style={[styles(theme).profileNameWrapper, { width: PROFILE_WIDTH }]}>
                         <Avatar
                             imageUrl={profileMap[Number(profileId)].photo_url || ''}
+                            present={currentPresenceData[profileId]?.current_status === 'present'}
                         />
+                        <Text style={{...theme.textStyle.caption, textAlign: 'center', marginTop: theme.spacing.xs}}>
+                            {profileMap[Number(profileId)].name || `User ${profileId}`}
+                        </Text>
                     </View>
                 ))}
             </View>
@@ -124,7 +127,6 @@ const PresenceVisualization = (props: PresenceVizualizationProps) => {
                 style={{ flex: 1 }}
             >
                 <View style={{ ...styles(theme).chartContainer, width: totalWidth, height: TIMELINE_HEIGHT + PRESENSE_HEIGHT_OFFSET }}>
-
                     <View style={{ ...styles(theme).combinedVisualizationContainer, marginTop: theme.spacing.lg, height: TIMELINE_HEIGHT }}>
                         <TimelineGrid
                             minTimeFloor={MIN_TIME_FLOOR}
@@ -180,11 +182,6 @@ const styles = (theme: Theme) => {
             ...theme.textStyle.bodyBold,
             color: theme.color.text,
         },
-        profileCountText: {
-            ...theme.textStyle.caption,
-            color: theme.color.text,
-            marginTop: 2,
-        },
         profileNamesContainer: {
             flexDirection: 'row',
             alignItems: 'center',
@@ -192,7 +189,7 @@ const styles = (theme: Theme) => {
         profileNameWrapper: {
             alignItems: 'center',
             justifyContent: 'center',
-            paddingHorizontal: theme.spacing.xs, // Reduced from sm to xs for tighter spacing
+            paddingHorizontal: theme.spacing.xs,
         },
         combinedVisualizationContainer: {
             position: 'relative',

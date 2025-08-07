@@ -4,18 +4,24 @@ import React from "react";
 
 // Mock react-redux
 jest.mock("react-redux", () => ({
-    useSelector: jest.fn(fn => fn({ customData: { value: "25.00" } })),
+    useSelector: jest.fn(() => jest.fn()),
     useDispatch: jest.fn(() => jest.fn()),
 }));
 
-// Mock RTK Query hook
-jest.mock("@/src/services/defaultQuery", () => ({
-    useGetDefaultDataQuery: () => ({
-        data: { data: "test" },
-        error: undefined,
+// Mock RTK Query hooks
+jest.mock("@/src/services/baseQuery", () => ({
+    useGetPresenceDataQuery: jest.fn(() => ({
+        data: {},
         isLoading: false,
-    }),
+        error: null,
+    })),
+    useGetProfileDataQuery: jest.fn(() => ({
+        data: [],
+        isLoading: false,
+        error: null,
+    })),
 }));
+
 
 // Mock theme context if used
 jest.mock("@/src/providers/themeContext", () => ({
@@ -23,6 +29,7 @@ jest.mock("@/src/providers/themeContext", () => ({
         theme: {
             color: { background: "#fff", error: "#f00", text: "#000" },
             spacing: { xs: 4, sm: 8, md: 16, lg: 24, xl: 32 },
+            size: { md: 48 },
             textStyle: {
                 header: { fontSize: 24, fontWeight: "bold", color: "#000" },
                 subheader: { fontSize: 20, fontWeight: "600", color: "#000" },

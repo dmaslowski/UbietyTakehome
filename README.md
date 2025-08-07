@@ -1,6 +1,7 @@
 # Welcome to Prsnce 👋
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Make sure you have node instealled before trying to run npm install.
 
 ## Get started
 
@@ -38,6 +39,8 @@ You can start developing by editing the files inside the **app** directory. This
 
 First the most important decision I needed to make was what to name the application. Like any good startup I took a word and removed all the vowels to come up with the trendy looking 'Prsnce'.
 
+
+
 ## Expo (Managed or Bare?)
 - When developing this project, the first decision I made was to use Expo as one of the base packages to help set up my react native project. If this were a production product, this would be one of the first decisions to agree upon with the team, and then we'd need to decide if we want to be a bare or managed expo project. Expo is one of the largest packages used with React Native, and by being managed, we get access to some powerful features like EAS services, which aid in build pipelines and allow us to do over-the-air updates. Since this project for the take-home isn't asking me to use any native modules, staying managed made the most sense to me, as we can always eject later.
 ## Navigation (Expo Router or React Native Navigation)
@@ -52,4 +55,15 @@ First the most important decision I needed to make was what to name the applicat
 - I also made the decision to presist the data between sessions. RTK will cache any query data per session, but I thought it be a good UX to cache the data between sessions so we can show it, but then when the app relaunches we will fetch it again. This allows us to show the old data while the new data is incoming which is a better more seemless expereince.
 
 ## Testing (Jest)
-- I didn't do anything crazy with my test choice going with Jest. Unit testing is important and I wanted to show consideration for it. I wrote a few sample tests to cover some things in the homescreen I considered worthy of testing but left a lot untested that in a production product I would have made sure to have coverage for like the localization, navigation, service, and store layers. 
+- I didn't do anything crazy with my test choice going with Jest. Unit testing is important and I wanted to show consideration for it. I wrote a few sample tests to cover some things in the Presence Visualization I considered worthy of testing but left a lot untested. If this was a production product I would have made sure to have coverage for like the localization, navigation, service, and store layers. 
+
+## The Visualization of the Data
+Truthfully, I got bogged down in the weeds of the frontend here more than I'd have liked to. Originally, I had plans to add multiple days for each possible day and display the data for each day, along with an 'All View' in the end. In the service of time, I ended up just grouping the data by three profiles at a time and allowing the user to cycle through them. The timeline will update so that the data representation starts at the earliest time, and I added a button so that a user can quickly scroll down. I also made the avatars show red for absent and blue for present, but ultimately, there is a lot I left on the table in terms of making a great UX.
+
+I believe this can easily be extended to show the data properly for each time, given a day selection of some sort, but I cut it from the scope. The reason I cut it from the scope was that the data visualization of it all took me much longer than I expected. I looked to see if there was an NPM package that could display this data closer to what I was looking for, but I was unable to find anything. So, deciding to make my element, I immediately ran into issues trying to use flexbox. Regrettably, I ended up going with absolute value calculation. I know it accomplished the task, but I value it and can make things a bit fragile, and would like it if this were a production application to try again with flexbox and a more dynamic layout. 
+
+I didn't want to spend too much more time after getting unstuck from this, so I also ended up cutting the idea to have a 'profile' page where a user could click into an avatar image and see a specific user's status and timeline. That is something with more time I'd like to add.- Lastly, after finally getting unstuck and getting my layout to calculate properly, I was well past the couple of hours I wanted to spend on this, so I didn't have a chance to add accessibility to the application in a more tangible way. I have some text that is too small, and I didn't do any contrast testing, or accesibility labes. That is something I'd also like to follow up on in the future.
+
+I also created a few utility functions to support my layout, which I think probably could be cleaned up and reformatted.
+
+In the end, I am happy with this solution. I think it accomplishes the aims of the original mock and the task, but wish I could have solved this problem using fewer magic numbers and absolutes views to get the layout working correctly. 
